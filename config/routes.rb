@@ -1,14 +1,6 @@
 Rails.application.routes.draw do
-  get 'attendances/index'
-
-  get 'attendances/create'
-
-  get 'users/new'
-
-  get 'users/destroy'
-
-  get 'users/show'
-
+  resources :attendances, only: [:index, :create]
+  resources :users, only: [:new, :create, :show, :destroy]
   get '/home' => 'home#index', as: 'home'
 
   root to: 'home#index'

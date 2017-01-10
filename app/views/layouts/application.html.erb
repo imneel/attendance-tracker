@@ -16,7 +16,15 @@
       </div>
     </div>
     <div class="row">
+      <div class="container">
+        <% if flash.notice %>
+          <div class="alert alert-info alert-dismissable">
+            <a href="#" class='close' data-dismiss="alert" aria-label="close">X</a>
+            <p><%= flash.notice %></p>
+          </div>
+        <% end %>
         <%= yield %>
+      </div>
     </div>
   </body>
 </html>
