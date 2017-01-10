@@ -23,7 +23,7 @@ class ActiveRecordOverrideRailtie < Rails::Railtie
         ActiveRecord::Base.connection_pool.disconnect!
         parsed_url = URI.parse(url)
         config =  {
-          adapter:             'postgis',
+          adapter:             'postgresql',
           host:                parsed_url.host,
           encoding:            'unicode',
           database:            parsed_url.path.split("/")[-1],
