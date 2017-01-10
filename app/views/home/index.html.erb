@@ -1,2 +1,12 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <%= form_tag("/") do %>
+      <div class="input-group">
+        <%= text_field_tag "username", nil, class: "form-control", placeholder: "Username" %>
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">Check-In</button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

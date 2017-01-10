@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GeniusUTest</title>
+    <title>GeniusU</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="jumbotron text-center">
+      <div class="row">
+        <h1><a href="/">GeniusU</a></h1>
+        <h7>Attendance Tracker</h7>
+      </div>
+    </div>
+    <div class="row">
+        <%= yield %>
+    </div>
   </body>
 </html>
