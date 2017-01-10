@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: genius_u_test_production
-  username: genius_u_test
-  password: <%= ENV['GENIUS_U_TEST_DATABASE_PASSWORD'] %>
+  database: <%= ENV['PG_DATABASE'] %>
+  username: <%= ENV['PG_USERNAME'] %>
+  password: <%= ENV['PG_PASSWORD'] %>
