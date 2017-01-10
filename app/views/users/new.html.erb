@@ -2,11 +2,12 @@
   <div class="row">
     <% if @user.errors.present? %>
       <div class="alert alert-danger alert-dismissable">
+        <a href="#" class='close' data-dismiss="alert" aria-label="close">X</a>
         <p>Failed to save user due to following errors:</p>
         <ol>
-          <% @user.errors.messages.each do |_, arr| %>
+          <% @user.errors.messages.each do |key, arr| %>
             <% arr.each do |err| %>
-              <li><%= err %></li>
+              <li><strong><%= key %>:</strong> <%= err %></li>
             <% end %>
           <% end %>
         </ol>

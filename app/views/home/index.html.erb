@@ -1,6 +1,14 @@
 <div class="container">
   <div class="row">
-    <%= form_tag("/") do %>
+  <% if flash[:error] %>
+    <div class="alert alert-danger alert-dismissable">
+      <a href="#" class='close' data-dismiss="alert" aria-label="close">X</a>
+      <p><%= flash[:error] %></p>
+    </div>
+  <% end %>
+  </div>
+  <div class="row">
+    <%= form_tag(attendances_path, method: :post) do %>
       <div class="input-group">
         <%= text_field_tag "username", nil, class: "form-control", placeholder: "Username" %>
         <div class="input-group-btn">

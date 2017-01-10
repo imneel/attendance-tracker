@@ -7,6 +7,7 @@ gem 'jquery-rails'
 gem 'tod'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
+gem 'kaminari'
 
 group :development do
   gem 'listen', '~> 3.0.5'
