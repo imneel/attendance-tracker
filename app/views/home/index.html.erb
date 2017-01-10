@@ -4,9 +4,13 @@
       <div class="input-group">
         <%= text_field_tag "username", nil, class: "form-control", placeholder: "Username" %>
         <div class="input-group-btn">
-          <button class="btn btn-default" type="submit">Check-In</button>
+          <button class="btn btn-danger" type="submit">Check-In</button>
         </div>
       </div>
     <% end %>
+  </div>
+  <br/>
+  <div class="row text-center">
+    <%= link_to("Create new user", "/", class: "btn btn-success") %>
   </div>
 </div>
