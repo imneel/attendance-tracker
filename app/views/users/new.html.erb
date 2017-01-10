@@ -1,5 +1,19 @@
 <div class="container">
   <div class="row">
+    <% if @user.errors.present? %>
+      <div class="alert alert-danger alert-dismissable">
+        <p>Failed to save user due to following errors:</p>
+        <ol>
+          <% @user.errors.messages.each do |_, arr| %>
+            <% arr.each do |err| %>
+              <li><%= err %></li>
+            <% end %>
+          <% end %>
+        </ol>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
     <%= form_for(@user) do |f| %>
       <div class="input-group">
       <%= f.text_field :username, class: "form-control", placeholder: "Username" %>
