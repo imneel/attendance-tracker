@@ -1,2 +1,36 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h5>Late count:&nbsp;&nbsp;<span class="badge"><%= @stats[:late] %>/<%= @stats[:total] %></span></h5>
+      <h5>Avg check-in:&nbsp;&nbsp;<span class="badge"><%= @stats[:t_avg] %></span></h5>
+    </div>
+    <div class="col-sm-4">
+
+    </div>
+    <div class="col-sm-4">
+      <%= paginate @attendances %>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table table-condensed table-hover">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+      </thead>
+      <tbody>
+        <% if @attendances.blank? %>
+          <tr>
+            <td colspan="2"><p class="text-center">No one has checked-in yet</p></td>
+          </tr>
+        <% else %>
+          <% @attendances.each do |attn| %>
+            <tr class="<%= attn.late ? 'danger' : '' %>">
+              <td><%= attn.date.strftime("%d %b") %></td>
+              <td><%= attn.tod.strftime("%I:%M %p") %></td>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

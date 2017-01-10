@@ -25,6 +25,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @attendances = @user.attendances.select("attendances.*", "tod >= '10:01:00' AS late").
+      order(date: :desc, tod: :desc).page(params[:page])
+    @stats = {
+      late: @user.attendances.where("tod >= '10:01:00'").count,
+      t_avg: @user.attendances.pluck("AVG(tod::time)").first.split(".").first,
+      total: @user.attendances.count
+    }
   end
 
   private

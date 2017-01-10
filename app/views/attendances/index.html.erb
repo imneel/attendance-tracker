@@ -1,9 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
-      <h5>Today's late count:&nbsp;&nbsp;<span class="badge"><%= @stats[:late] %></span></h5>
+      <h5>Today's late count:&nbsp;&nbsp;<span class="badge"><%= @stats[:late] %>/<%= @stats[:total] %></span></h5>
+      <h5>Today's avg check-in:&nbsp;&nbsp;<span class="badge"><%= @stats[:t_avg] %></span></h5>
     </div>
     <div class="col-sm-4">
+      <%= link_to("View charts", charts_path, class: "btn btn-info") %>
     </div>
     <div class="col-sm-4">
       <%= paginate @attendances %>
@@ -20,12 +22,12 @@
       <tbody>
         <% if @attendances.blank? %>
           <tr>
-            <td colspan="5"><p class="text-center">No one has checked-in yet</p></td>
+            <td colspan="3"><p class="text-center">No one has checked-in yet</p></td>
           </tr>
         <% else %>
           <% @attendances.each do |attn| %>
-            <tr>
-              <td><%= attn.user.username %></td>
+            <tr class="<%= attn.late ? 'danger' : '' %>">
+              <td><%= link_to(attn.user.username, user_path(attn.user)) %></td>
               <td><%= attn.date.strftime("%d %b") %></td>
               <td><%= attn.tod.strftime("%I:%M %p") %></td>
           <% end %>
