@@ -14,6 +14,14 @@
         <h1><a href="/">GeniusU</a></h1>
         <h7>Attendance Tracker</h7>
       </div>
+      <div class="row pull-right">
+        <% if current_admin %>
+          <%= link_to("Analytics", attendances_path) %> |
+          <%= link_to("Logout", destroy_admin_session_path, method: :delete) %>
+        <% else %>
+          <%= link_to("Admin login", new_admin_session_path) %>
+        <% end %>
+      </div>
     </div>
     <div class="row">
       <div class="container">

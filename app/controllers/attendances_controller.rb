@@ -1,5 +1,7 @@
 class AttendancesController < ApplicationController
   def index
+    @attendances = Attendance.includes(:user).order(date: :desc, tod: :desc).page(params[:page])
+    @stats = get_todays_stats
   end
 
   def create
@@ -16,5 +18,11 @@ class AttendancesController < ApplicationController
     else
       redirect_to home_path, flash: { error: "Invalid username #{params[:username].inspect}." }
     end
+  end
+
+  private
+
+  def get_todays_stats
+    { late: Attendance.where(date: Date.today).where("tod >= '10:01:00'").count }
   end
 end

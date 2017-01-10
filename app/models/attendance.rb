@@ -5,5 +5,5 @@ class Attendance < ApplicationRecord
   validates :tod, presence: true
 
   serialize :tod, Tod::TimeOfDay
-  # paginate_per 50
+  paginates_per 50
 end

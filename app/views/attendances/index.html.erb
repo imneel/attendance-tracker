@@ -1,2 +1,36 @@
-<h1>Attendances#index</h1>
-<p>Find me in app/views/attendances/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h5>Today's late count:&nbsp;&nbsp;<span class="badge"><%= @stats[:late] %></span></h5>
+    </div>
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-4">
+      <%= paginate @attendances %>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table table-condensed table-hover">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Date</th>
+          <th>Time</th>
+      </thead>
+      <tbody>
+        <% if @attendances.blank? %>
+          <tr>
+            <td colspan="5"><p class="text-center">No one has checked-in yet</p></td>
+          </tr>
+        <% else %>
+          <% @attendances.each do |attn| %>
+            <tr>
+              <td><%= attn.user.username %></td>
+              <td><%= attn.date.strftime("%d %b") %></td>
+              <td><%= attn.tod.strftime("%I:%M %p") %></td>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
