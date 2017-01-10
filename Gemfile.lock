@@ -138,6 +138,8 @@ GEM
       railties (>= 3.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    uglifier (3.0.4)
+      execjs (>= 0.3.0, < 3)
     warden (1.2.6)
       rack (>= 1.0)
     websocket-driver (0.6.4)
@@ -157,6 +159,7 @@ DEPENDENCIES
   rails (~> 5.0.1)
   tod
   twitter-bootstrap-rails
+  uglifier
 
 BUNDLED WITH
    1.13.7
