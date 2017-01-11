@@ -30,7 +30,7 @@ class AttendancesController < ApplicationController
   def get_todays_stats
     {
       late: Attendance.where(date: Date.today).where("tod >= '10:01:00'").count,
-      t_avg: Attendance.where(date: Date.today).pluck("AVG(tod::time)").first.split(".").first,
+      t_avg: Attendance.where(date: Date.today).pluck("AVG(tod::time)").first.to_s.split(".").first,
       total: Attendance.where(date: Date.today).count
     }
   end
